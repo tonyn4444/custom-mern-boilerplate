@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>
-	</title>
-	<link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+	<html>
+		<head>
+			<title>
+			</title>
+			<link rel="stylesheet" href="styles.css" />
+			<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
+		</head>
+		<body>
 
-</body>
-</html>
+
+			<div id="container">
+				<div id="content">
+					<h1>Weather Forecast</h1>
+						<p><span><%= data.name %>, <%= data.sys.country %></span><br>
+						<span><%= Math.floor((data.main.temp - 273)) %> <span class="blue">&#x2103</span></span><br>
+						<span><%= data.weather[0].main %></span></p>
+
+						<div class="text-center all-icon">
+          <div class="icon sun-shower hide ">
+            <div class="cloud"></div>
+            <div class="sun">
+              <div class="rays"></div>
+            </div>
+            <div class="rain"></div>
+          </div>
+          <div class="icon thunder-storm hide thunderstom">
+            <div class="cloud"></div>
+            <div class="lightning">
+              <div class="bolt"></div>
+              <div class="bolt"></div>
+            </div>
+          </div>
+          <div class="icon cloudy hide clouds">
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+          </div>
+          <div class="icon flurries hide snow">
+            <div class="cloud"></div>
+            <div class="snow">
+              <div class="flake"></div>
+              <div class="flake"></div>
+            </div>
+          </div>
+          <div class="icon sunny clear">
+            <div class="sun">
+              <div class="rays"></div>
+            </div>
+          </div>
+          <div class="icon rainy hide rain">
+            <div class="cloud"></div>
+            <div class="rain"></div>
+          </div>
+        </div>
+
+					<span id="credit">By <span class="blue">Tony Nguyen</span></span>
+				</div>
+			</div>
+
+
+		</body>
+	</html>
