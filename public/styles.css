@@ -3,6 +3,10 @@ body {
 	font-family: Roboto;
 }
 
+#googleMap {
+  margin: 0 auto;
+}
+
 #container {
 	margin-top: 70px;
 	/*border:*/ 2px solid red;
@@ -51,6 +55,7 @@ p {
 
 #temp-icon-farenh:hover {
   color: white;
+  margin-bottom: 15px;
 }
 
 .all-icon {
@@ -69,12 +74,12 @@ div.hide {
   height: 10rem;
 }
 
-#clouds {
-  margin-top: -50px;
+#partly-cloudy-day {
+  margin-top: -200px;
 }
 
 #sunny {
-  margin-top: -50px;
+  margin-top: -100px;
 }
 
 

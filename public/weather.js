@@ -1,3 +1,5 @@
+
+
   var blueSkycons = new Skycons({"color": "blue"});
   var yellowSkycons = new Skycons({"color": "blue"});
   var greySkycons = new Skycons({"color": "grey"})
@@ -43,6 +45,13 @@ var x = document.getElementById('city-name')
 // https://api.darksky.net/forecast/369b9e8838df87b945aa6f8986fcc5a8/37.8267,-122.4233
 // "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"
 
+  // var geocoder;
+  // geocoder.geocode(req.body.location, function(err, data) {
+  //       var lat = data.results[0].geometry.location.lat;
+  //       var lng = data.results[0].geometry.location.lng;
+  //       var location = data.results[0].formatted_address;
+  //   });
+
 		function getLocation() {
 		    if (navigator.geolocation) {
 		        navigator.geolocation.getCurrentPosition(showPosition);
@@ -51,11 +60,28 @@ var x = document.getElementById('city-name')
 		    }
 		}
 
+			function myMap() {
+        var mapProp= {
+        center:new google.maps.LatLng(51.508742,-0.120850),
+        zoom:5,
+      };
+      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    }
+
 		function showPosition(position) {
 		    // x.innerHTML = "Latitude: " + position.coords.latitude + 
 		    // "<br>Longitude: " + position.coords.longitude;
 		    lon = position.coords.longitude
 		    lat = position.coords.latitude
+		    var mapProp= {
+		        center:new google.maps.LatLng(lat,lon),
+		        zoom: 10
+    		}
+
+     		var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+
+
 		    url = 'https://api.darksky.net/forecast/369b9e8838df87b945aa6f8986fcc5a8/' + lat + ',' + lon;
 		    console.log(lon, lat)
 		    console.log(url);
@@ -65,12 +91,12 @@ var x = document.getElementById('city-name')
 				success: function(response) {
 					console.log(response);
 
-					// var data = JSON.parse(response);
-					$('#city-name').html(response.timezone + " ");
+					$('#city-name').attr("class", "hide");
 					$('#temp').html(Math.floor(response.currently.temperature));
 					// $('#country').html(response.timezone);
-					$('#forecast').html(response.currently.summary);
+					$('#forecast').html(response.hourly.summary);
 					$('#temp-icon-farenh').html('&#x2109')
+					// $('#coords').html('Your location: (' + Math.floor(response.latitude) + ', ' + Math.floor(response.longitude) + ')');
 
 					switch(response.currently.summary) {
 						case "Partly Cloudy":
