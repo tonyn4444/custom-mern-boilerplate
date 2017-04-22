@@ -3,23 +3,20 @@ var router = express.Router();
 var middleware = require('../middleware');
 var request = require('request');
 
-var API_KEY = '&APPID=ef328b71e4664319163442c800054e65'
-var url = 'http://api.openweathermap.org/data/2.5/weather?q=death%20valley,us'
 
-var options = {
-	url: url,
-	headers: {
-		'APPID': API_KEY
-	}
-}
+var API_KEY = '369b9e8838df87b945aa6f8986fcc5a8';
+var url = 'https://api.darksky.net/forecast/369b9e8838df87b945aa6f8986fcc5a8/37.8267,-122.4233';
 
 router.get('/', function(req, res) {
-	request(url + API_KEY, function(error, response, body) {
-	if (!error && response.statusCode == 200) {
-		var parsedData = JSON.parse(body);
-		res.render('index', {data: parsedData})
+	request(url, function(error, response, body) {
+		if(!error && response.statusCode == 200) {
+			var parsedData = JSON.parse(body);
+			res.render('index', {data: parsedData});
 		}
-	});
-})
+	})
+
+});
+
+
 
 module.exports = router;

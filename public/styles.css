@@ -7,7 +7,14 @@ body {
 	margin-top: 70px;
 	/*border:*/ 2px solid red;
 	height: 700px;
+}
 
+.hide {
+  display: none;
+}
+
+.show {
+  display: initial;
 }
 
 #content {
@@ -40,6 +47,10 @@ h1 {
 p {
 	/*border:*/ 2px solid red;
 	padding: 15px;
+}
+
+#temp-icon-farenh:hover {
+  color: white;
 }
 
 .all-icon {
