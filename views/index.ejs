@@ -11,52 +11,58 @@
 
 			<div id="container">
 				<div id="content">
-					<h1>Weather Forecast</h1>
-						<p><span><%= data.name %>, <%= data.sys.country %></span><br>
-						<span><%= Math.floor((data.main.temp - 273)) %> <span class="blue">&#x2103</span></span><br>
-						<span><%= data.weather[0].main %></span></p>
+					<em><h1>Weather Forecast</h1></em>
+						<em><p><span id="city-name">Retrieving weather... </span><span id="country"> </span><br>
+						<span id="temp"></span> <span id="temp-icon-celcius" class="blue"></span><br>
+						<span id="forecast"></span></p></em>
 
 						<div class="text-center all-icon">
-          <div class="icon sun-shower hide ">
+          <div id="sun-shower" class="icon sun-shower hide ">
             <div class="cloud"></div>
             <div class="sun">
               <div class="rays"></div>
             </div>
             <div class="rain"></div>
           </div>
-          <div class="icon thunder-storm hide thunderstom">
+          <div id="thunder-storm" class="icon thunder-storm hide thunderstom">
             <div class="cloud"></div>
             <div class="lightning">
               <div class="bolt"></div>
               <div class="bolt"></div>
             </div>
           </div>
-          <div class="icon cloudy hide clouds">
+          <div id="clouds" class="icon cloudy hide clouds">
             <div class="cloud"></div>
             <div class="cloud"></div>
           </div>
-          <div class="icon flurries hide snow">
+          <div id="snow" class="icon flurries hide snow">
             <div class="cloud"></div>
             <div class="snow">
               <div class="flake"></div>
               <div class="flake"></div>
             </div>
           </div>
-          <div class="icon sunny clear">
+          <div id="sunny" class="icon sunny hide clear">
             <div class="sun">
               <div class="rays"></div>
             </div>
           </div>
-          <div class="icon rainy hide rain">
+          <div id="rain" class="icon rainy hide rain">
             <div class="cloud"></div>
             <div class="rain"></div>
           </div>
         </div>
 
-					<span id="credit">By <span class="blue">Tony Nguyen</span></span>
+					<em><span id="credit">By <span class="blue">Tony Nguyen</span></span></em>
 				</div>
 			</div>
 
 
 		</body>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script src="weather.js" type="text/javascript"></script>
+
 	</html>

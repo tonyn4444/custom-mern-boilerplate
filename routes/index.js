@@ -4,7 +4,7 @@ var middleware = require('../middleware');
 var request = require('request');
 
 var API_KEY = '&APPID=ef328b71e4664319163442c800054e65'
-var url = 'http://api.openweathermap.org/data/2.5/weather?q=sunnyvale,us'
+var url = 'http://api.openweathermap.org/data/2.5/weather?q=death%20valley,us'
 
 var options = {
 	url: url,
