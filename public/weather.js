@@ -3,10 +3,12 @@ $(document).ready(function() {
 	// var x = document.getElementById("credit");
 var lon = 0;
 var lat = 0;
-var API_KEY = '&APPID=ef328b71e4664319163442c800054e65';
-var url = 'http://api.openweathermap.org/data/2.5/weather?lon=' + lon + '&lat=' + lat;
+var API_KEY = '369b9e8838df87b945aa6f8986fcc5a8';
+var url = 'https://api.darksky.net/forecast/369b9e8838df87b945aa6f8986fcc5a8/' + lat + ',' + lon;
 var x = document.getElementById('city-name')
 // api.openweathermap.org/data/2.5/weather?lat=35&lon=139
+// https://api.darksky.net/forecast/369b9e8838df87b945aa6f8986fcc5a8/37.8267,-122.4233
+
 
 		function getLocation() {
 		    if (navigator.geolocation) {
@@ -21,23 +23,27 @@ var x = document.getElementById('city-name')
 		    // "<br>Longitude: " + position.coords.longitude;
 		    lon = position.coords.longitude
 		    lat = position.coords.latitude
-		    url = 'http://api.openweathermap.org/data/2.5/weather?lon=' + lon + '&lat=' + lat;
+		    url = 'https://api.darksky.net/forecast/369b9e8838df87b945aa6f8986fcc5a8/' + lat + ',' + lon;
 		    console.log(lon, lat)
 		    console.log(url);
 			$.ajax({
-				url: url + API_KEY,
+				url: url,
+				datatype: 'jsonp',
+				headers: {
+					'key': API_KEY
+				},
 				success: function(response) {
 					console.log(response);
 
 					// var data = JSON.parse(response);
-					$('#city-name').html(response.name + ", ");
-					$('#temp').html(Math.floor((response.main.temp - 273)));
-					$('#country').html(response.sys.country);
-					$('#forecast').html(response.weather[0].main);
-					$('#temp-icon-celcius').html('&#x2103')
+					$('#city-name').html(response.timezone + ", ");
+					$('#temp').html(Math.floor(( (9/5) * (response.currently.temperature - 273)) + 32));
+					$('#country').html(response.timezone);
+					$('#forecast').html(response.currently.summary);
+					$('#temp-icon-farenh').html('&#x2109')
 
 					switch(response.weather[0].main) {
-						case "Clouds":
+						case "Overcast":
 							$('#clouds').attr('class', 'icon cloudy clouds');
 							break;
 						case "Clear":
@@ -51,19 +57,19 @@ var x = document.getElementById('city-name')
 							break;
 					}
 
-					$('#temp-icon-celcius').on('click', function(){
+					$('#temp-icon-farenh').on('click', function(){
 						 // F = 9/5 (K - 273) + 32
-						$('#temp').html(Math.floor(((9/5) * (response.main.temp - 273)) + 32));
-						$('#temp-icon-celcius').html('&#x2109');
-						$('#temp-icon-celcius').attr('id', 'temp-icon-farenh');
+						$('#temp').html(Math.floor(response.main.temp - 273));
+						$('#temp-icon-farenh').html('&#x2103');
+						$('#temp-icon-farenh').attr('id', 'temp-icon-celcius');
 					});
 
-					$('#temp-icon-farenh').on('click', function(){
+					$('#temp-icon-celcius').on('click', function(){
 						 // F = 9/5 (K - 273) + 32
 						 console.log('test')
 						$('#temp').html(response.main.temp);
-						$('#temp-icon-farenh').html('&#x2103')
-						$('#temp-icon-farenh').attr('id', 'temp-icon-celcius');
+						$('#temp-icon-celcius').html('&#x2109')
+						$('#temp-icon-celcius').attr('id', 'temp-icon-farenh');
 					});
 				}
 			});
