@@ -1,16 +1,25 @@
 
 
   var blueSkycons = new Skycons({"color": "blue"});
-  var yellowSkycons = new Skycons({"color": "blue"});
-  var greySkycons = new Skycons({"color": "grey"})
-
+  var yellowSkycons = new Skycons({"color": "yellow"});
+  var greySkycons = new Skycons({"color": "grey"});
+  var blackSkycons = new Skycons({"color": "black"});
+  var whiteSkycons = new Skycons({"color": "white"});
 
   // on Android, a nasty hack is needed: {"resizeClear": true}
 
   // you can add a canvas by it's ID...
   greySkycons.add("partly-cloudy-day", Skycons.PARTLY_CLOUDY_DAY);
-  blueSkycons.add("rainy-day", Skycons.RAIN);
-  yellowSkycons.add("sunny-day", Skycons.CLEAR_DAY);
+  greySkycons.add("rainy-day", Skycons.RAIN);
+  yellowSkycons.add("clear-day", Skycons.CLEAR_DAY);
+  greySkycons.add("clear-night", Skycons.CLEAR_NIGHT);
+  greySkycons.add("partly-cloudy-night", Skycons.PARTLY_CLOUDY_NIGHT);
+  greySkycons.add("cloudy", Skycons.CLOUDY);
+  blueSkycons.add("rain", Skycons.RAIN);
+  greySkycons.add("sleet", Skycons.SLEET);
+  whiteSkycons.add("snow", Skycons.SNOW);
+  greySkycons.add("wind", Skycons.WIND);
+  // blackSkycons.add("clear-night", Skycons.CLEAR_NIGHT);
 
 
   // ...or by the canvas DOM element itself.
@@ -23,6 +32,8 @@
   blueSkycons.play();
   greySkycons.play();
   yellowSkycons.play();
+  blackSkycons.play();
+  whiteSkycons.play();
 
 
   // you can also halt animation with skycons.pause()
@@ -98,19 +109,36 @@ var x = document.getElementById('city-name')
 					$('#temp-icon-farenh').html('&#x2109')
 					// $('#coords').html('Your location: (' + Math.floor(response.latitude) + ', ' + Math.floor(response.longitude) + ')');
 
-					switch(response.currently.summary) {
-						case "Partly Cloudy":
+					switch(response.currently.icon) {
+						case "partly-cloudy-day":
 							$('#partly-cloudy-day').attr('class', 'show');
 							break;
-						case "Clear":
-							$("#sunny").attr('class', 'icon sunny clear');
+						case "rainy-day":
+							$("#rainy-day").attr('class', 'show');
 							break;
-						case "Mostly Cloudy":
-							greySkycons.set('partly-cloudy-day', Skycons.CLOUDY)
-							$('#partly-cloudy-day').attr('class', 'show');
+						case "clear-day":
+							$("#clear-day").attr('class', 'show');
 							break;
-						case "Clear":
-							$("#sunny").attr('class', 'icon sunny clear');
+						case "partly-cloudy-night":
+							$('#partly-cloudy-night').attr('class', 'show');
+							break;
+						case "clear-night":
+							$("#clear-night").attr('class', 'show');
+							break;
+						case "cloudy":
+							$("#cloudy").attr('class', 'show');
+							break;
+						case "rain":
+							$("#rain").attr('class', 'show');
+							break;
+						case "sleet":
+							$("#sleet").attr('class', 'show');
+							break;
+						case "snow":
+							$("#snow").attr('class', 'show');
+							break;
+						case "wind":
+							$("#wind").attr('class', 'show');
 							break;
 					}
 

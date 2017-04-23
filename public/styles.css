@@ -78,9 +78,38 @@ div.hide {
   margin-top: -200px;
 }
 
-#sunny {
-  margin-top: -100px;
+#clear-day {
+  margin-top: -200px;
 }
+
+#rainy-day {
+  margin-top: -200px;
+}
+
+#clear-night {
+  margin-top: -200px;
+}
+#partly-cloudy-night {
+  margin-top: -200px;
+}
+#cloudy {
+  margin-top: -200px;
+}
+#rain {
+  margin-top: -200px;
+}
+#sleet {
+  margin-top: -200px;
+}
+
+#snow {
+  margin-top: -200px;
+}
+#wind {
+  margin-top: -200px;
+}
+
+
 
 
 
